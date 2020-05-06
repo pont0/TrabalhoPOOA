@@ -6,6 +6,7 @@
 package br.vianna.locadora.model.DAO.impl;
 
 import br.vianna.locadora.model.DAO.GenericsDAO;
+import br.vianna.locadora.model.DTO.UsuarioLoginDTO;
 import br.vianna.locadora.model.domain.Usuario;
 import java.sql.SQLException;
 import java.util.List;
@@ -73,14 +74,18 @@ public class UsuarioDAO extends GenericsDAO<Usuario, Long> {
 
     }
     
-    public Usuario buscarPeloLoginaESenha(String login, String senha) throws SQLException {
+    public UsuarioLoginDTO buscarPeloLoginaESenha(String login, String senha) throws SQLException {
         
         Query q = conexao.createNamedQuery("Usuario.findByLoginaAndSenha");
 
         try {
-            q.setParameter("login", login);
+            q.setParameter("log", login);
             q.setParameter("senha", senha);
-            return (Usuario) q.getSingleResult();
+            Usuario user = (Usuario) q.getSingleResult();
+            UsuarioLoginDTO udto = new UsuarioLoginDTO(user.getId(), user.getNome(), user.getEhAdm());
+            
+            return udto;
+            
         } catch (NoResultException e) {
             return null;
         } catch (NonUniqueResultException ex) {

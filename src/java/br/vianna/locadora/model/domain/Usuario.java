@@ -44,7 +44,7 @@ public class Usuario implements Serializable {
     private boolean ehAdm;
     
     @Column(nullable = false)
-    private String nome, login, senha;
+    private String nome, login, senha, email;
     
     @OneToMany(mappedBy = "locatario")
     private List <Aluguel> alugueis;
@@ -55,6 +55,14 @@ public class Usuario implements Serializable {
         this.nome = nome;
         this.login = login;
         this.senha = senha;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Usuario() {
@@ -68,7 +76,7 @@ public class Usuario implements Serializable {
         this.id = id;
     }
 
-    public boolean isEhAdm() {
+    public boolean getEhAdm() {
         return ehAdm;
     }
 

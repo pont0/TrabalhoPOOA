@@ -40,6 +40,9 @@
         </header>
 
         <div class="layout-main"> 
+            
+<!--         Se usuario tiver logado, aoarece o menu-->
+            <c:if test="${sessionScope.user !=null}">
 
             <aside>
                 <nav class="sidebar sidebar-open">
@@ -54,7 +57,7 @@
                                     class="oi oi-home"></i> <span>Alugados</span>
                             </a></li>
                     </ul>
-
+                    <c:if test="${sessionScope.user.ehAdministrador}">
                     <ul class="nav nav-pills">
                         <li class="nav-item"><span class="nav-link active" >Cadastro</span></li>
                         <li class="nav-item">
@@ -68,7 +71,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"> <i class="oi oi-plus"></i> 
+                            <a class="nav-link" href="app?ac=livros"> <i class="oi oi-plus"></i> 
                                 <span>Modelos</span>
                             </a>
                         </li>
@@ -78,17 +81,19 @@
                             </a>
                         </li>
                     </ul>
-
+                    </c:if>
 
                     <ul class="nav nav-pills">
-                        <li class="nav-item"><a class="nav-link " href="/"> <i
+                        <li class="nav-item">
+                            
+                            <a class="nav-link " href="app?ac=logout"> <i
                                     class="oi oi-home"></i> <span>SAIR</span>
                             </a></li>
                     </ul>
 
                 </nav>
             </aside>
-
+            </c:if>
             <section class="layout-content">
 
                 <nav class="navbar navbar-expand-md bg-light">
@@ -96,7 +101,7 @@
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active">
                                 <i class="oi oi-caret-right"></i>
-                                <span>Locadora Carro Bom</span>
+                                <span>Locadora Carro Bom - ${sessionScope.user.nome}</span>
                             </li>
                         </ul>
                     </div>

@@ -4,6 +4,7 @@
     Author     : pablo
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -31,35 +32,53 @@
 </head>
 <body>
 	
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt>
-					<img src="images/img-02.jpg" alt="IMG">
+	<div class="">
+		<div class="">
+                    
+                    <c:if test="${requestScope.succ != null}">
+                                <div class="alert alert-info">
+                                    ${requestScope.succ}
+                                </div>
+                            </c:if>
+                            
+                            <c:if test="${requestScope.err != null}">
+                                <div class="alert alert-danger">
+                                    ${requestScope.err}
+                                </div>
+                            </c:if>
+			<div class="">
+				<div class="" align = "center">
+                                    <img src="images/img-03.jpg" alt="IMG"
 				</div>
-
-				<form class="login100-form validate-form" >
+                            
+                            
+                            
+                            <form class="" action="app" method="POST">
+                                
+<!--                                se tiver form pra enviar-->
+                                <input type="hidden" name="ac" value="checkLogin"/>
+                                <br>
 					<span class="login100-form-title">
 						Login
 					</span>
-
-					<div class="wrap-input100 validate-input" data-validate = "email valido requerido: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Email">
+<br>
+					<div class="" >
+						<input class="input100" border="1px" type="text" name="cpLogin" placeholder="Insira o login aqui">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Senha requerida">
-						<input class="input100" type="password" name="pass" placeholder="Senha">
+					<div class="" >
+						<input class="input100" type="password" name="cpSenha" placeholder="Insira a senha aqui">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
 					
-					<div class="container-login100-form-btn">
+					<div class="">
 						<button class="login100-form-btn">
 							Entrar 
 						</button>
@@ -81,23 +100,23 @@
 	
 
 <!--	
-===============================================================================================	-->
+===============================================================================================	
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
+===============================================================================================
 	<script src="vendor/bootstrap/js/popper.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
+===============================================================================================
 	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
+===============================================================================================
 	<script src="vendor/tilt/tilt.jquery.min.js"></script>
 	<script >
 		$('.js-tilt').tilt({
 			scale: 1.1
 		})
 	</script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
+===============================================================================================
+	<script src="js/main.js"></script>-->
 
 </body>
-</html>-->
+</html>
 
